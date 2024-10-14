@@ -33,7 +33,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
         
     # 取消优化
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0")
-    if(CMAKE_BUILD_TYPE MATCHES "Realease")   
+    if(CMAKE_BUILD_TYPE MATCHES "Debug")   
         # 打印一些信息帮助调试 
         message(STATUS "Debug.")  
         message(STATUS "AddressSanitizer enabled.")  
@@ -53,4 +53,4 @@ endif()
 #其他
 ##万能头文件 #include <bits/stdc++.h>
 ##常用库：proxy.h（https://github.com/microsoft/proxy）
-##考虑标准库扩展 boost和abseil
+##考虑标准库扩展 boost和abseil，工具库folly
