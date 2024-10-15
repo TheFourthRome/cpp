@@ -44,13 +44,16 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
         # 打印一些信息帮助调试  
         message(STATUS "Release ver.")
     endif()   
-endif() 
+endif()
+ 
+##其他
 
-# 对生成的Release版程序，可使用valgrind排查错误：
+##对生成的Release版程序，可使用valgrind排查错误：
 # valgrind --tool=memcheck --leak-check=yes --show-reachable=yes <path_to_excutable>
 
+##记录程序运行过程，并适用gdb查看：rr（https://github.com/rr-debugger/rr）
 
-#其他
 ##万能头文件 #include <bits/stdc++.h>
+
 ##常用库：proxy.h（https://github.com/microsoft/proxy）
-##考虑标准库扩展 boost和abseil，工具库folly
+##标准库扩展 boost、coost和abseil，工具库folly，异步框架async_simple（https://github.com/alibaba/async_simple）
