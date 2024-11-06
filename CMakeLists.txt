@@ -17,23 +17,23 @@ add_executable(test main.cpp)
 find_package(fmt REQUIRED)
 target_link_libraries(test fmt::fmt)
 
-cmake_minimum_required(VERSION 3.10)   
+cmake_minimum_required(VERSION 3.10) 
 
   
 # 链接AddressSanitizer运行时库  
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU") 
-    # 添加编译器标志来启用Sanitizers
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -fsanitize=address,leak,undefined -fno-omit-frame-pointer -g")
+    if(CMAKE_BUILD_TYPE MATCHES "Debug")
+        # 添加编译器标志来启用Sanitizers
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -fsanitize=address,leak,undefined -fno-omit-frame-pointer -g")
 
-    ## 添加编译器标志来启用Sanitizers-多线程环境
-    ##set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -fsanitize=thread -fno-omit-frame-pointer -g")
-
-    # 添加编译器标志输出警告信息
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -Werror") 
-        
-    # 取消优化
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0")
-    if(CMAKE_BUILD_TYPE MATCHES "Debug")   
+        ## 添加编译器标志来启用Sanitizers-多线程环境
+        ##set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=thread -fno-omit-frame-pointer -g")
+    
+        # 添加编译器标志输出警告信息
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -pedantic -Werror") 
+            
+        # 取消优化
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")   
         # 打印一些信息帮助调试 
         message(STATUS "Debug.")  
         message(STATUS "AddressSanitizer enabled.")  
