@@ -21,7 +21,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     # 取消优化
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
     # --------------------------------------RELEASE------------------------------------------------------------------
-    set(CMAKE_CXX_FLAGS_Release "${CMAKE_CXX_FLAGS_Release}")
+    set(CMAKE_CXX_FLAGS_Release "${CMAKE_CXX_FLAGS_Release} -flto")
 endif()
  
 ##其他
