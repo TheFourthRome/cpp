@@ -1,19 +1,11 @@
 cmake_minimum_required(VERSION 3.28.3)
 project(test VERSION 0.1.0 LANGUAGES C CXX)
+add_executable(test main.cpp)
 
 # 设置C++标准(gnu++23 in gnu compiler)  
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)  
-
-# 在Ubuntu上安装fmt库：sudo apt-get install libfmt-dev，然后才可使用下面的fmt库
-# 对于其他系统，见https://fmt.dev/
-add_executable(test main.cpp)
-find_package(fmt REQUIRED)
-target_link_libraries(test fmt::fmt)
-
-cmake_minimum_required(VERSION 3.10) 
-
-  
+ 
 # 链接AddressSanitizer运行时库  
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     # --------------------------------------DEBUG------------------------------------------------------------------
@@ -33,6 +25,11 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 endif()
  
 ##其他
+
+# 在Ubuntu上安装fmt库：sudo apt-get install libfmt-dev，然后才可使用下面的fmt库
+# 对于其他系统，见https://fmt.dev/
+# find_package(fmt REQUIRED)
+# target_link_libraries(test fmt::fmt)
 
 ##对生成的Release版程序，可使用valgrind排查错误：
 # valgrind --tool=memcheck --leak-check=yes --show-reachable=yes <path_to_excutable>
