@@ -1,4 +1,7 @@
 *
-!CMakeListes.txt
-!CMakePresets.json
 !.gitignore
+!config/
+!config/C
+!config/C/*
+!config/CPP
+!config/CPP/*
