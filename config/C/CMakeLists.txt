@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28.3)
 project(test VERSION 0.1.0 LANGUAGES C CXX)
-add_executable(test main.cpp)
+add_executable(test main.c)
 
 # 设置C++标准(gnu++23 in gnu compiler)  
 set(CMAKE_CXX_STANDARD 23)
