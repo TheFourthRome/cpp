@@ -31,6 +31,8 @@ endif()
 # find_package(fmt REQUIRED)
 # target_link_libraries(test fmt::fmt)
 
+##debug工具：
+# mtrace() 函数，mprotect()函数
 ##对生成的Release版程序，可使用valgrind排查错误：
 # valgrind --tool=memcheck --leak-check=yes --show-reachable=yes <path_to_excutable>
 
