@@ -1,10 +1,17 @@
 cmake_minimum_required(VERSION 3.28.3)
 project(test VERSION 0.1.0 LANGUAGES C CXX)
-add_executable(test main.c)
 
 # 设置C++标准(gnu++23 in gnu compiler)  
 set(CMAKE_C_STANDARD 2B)
-set(CMAKE_C_STANDARD_REQUIRED True)  
+set(CMAKE_C_STANDARD_REQUIRED True)
+set(CMAKE_CXX_EXTENSIONS ON)
+
+#生成compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+add_executable(test main.c)
+
+
  
 # 链接AddressSanitizer运行时库  
 if(CMAKE_C_COMPILER_ID MATCHES "GNU")
@@ -32,3 +39,5 @@ endif()
 # valgrind --tool=memcheck --leak-check=yes --show-reachable=yes <path_to_excutable>
 
 ##记录程序运行过程，并使用gdb查看：rr（https://github.com/rr-debugger/rr）
+
+#切换构建目标--使用CMakePresets.json

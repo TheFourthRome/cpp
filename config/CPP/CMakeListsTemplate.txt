@@ -1,10 +1,16 @@
 cmake_minimum_required(VERSION 3.28.3)
 project(test VERSION 0.1.0 LANGUAGES C CXX)
+
+# 设置C++标准(gnu++23 in gnu compiler) 
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_EXTENSIONS ON)
+
+#生成compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 add_executable(test main.cpp)
 
-# 设置C++标准(gnu++23 in gnu compiler)  
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED True)  
  
 # 链接AddressSanitizer运行时库  
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
@@ -42,3 +48,5 @@ endif()
 
 ##常用库：proxy.h（https://github.com/microsoft/proxy）
 ##标准库扩展 boost、coost和abseil，工具库folly，异步框架async_simple（https://github.com/alibaba/async_simple）
+
+#切换构建目标--使用CMakePresets.json
